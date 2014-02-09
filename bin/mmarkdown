@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+#
+#
+
+root = "#{__dir__}/.."
+require "#{root}/lib/mmarkdown"
+
+def usage
+  puts "mmarkdown <file.md>"
+end
+
+if ARGV.size != 1
+  usage
+  exit 0
+end
+
+md_string = File.open(ARGV[0]).read
+
+puts MMarkdown.new(md_string).to_str
+
