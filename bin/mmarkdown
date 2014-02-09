@@ -2,19 +2,66 @@
 #
 #
 
+require 'optparse'
+
 root = "#{__dir__}/.."
 require "#{root}/lib/mmarkdown"
 
+options = {}
+
+option_parser = OptionParser.new {|opts|
+  Version = MMarkdown::VERSION
+
+  opts.banner  = "Markdown with MathML\n"
+  opts.banner += "  Usage: #{File.basename(__FILE__)} <file.md>"
+
+  opts.on("-o", "--output FILENAME", String, "Output file name") {|f|
+    options[:out_filename] = f
+  }
+
+  opts.on("--stdout", "Output to STDOUT") {
+    options[:stdout] = true
+  }
+
+  opts.on("-h", "--help", "Shows this message") {
+    puts opts
+    exit
+  }
+}
+option_parser.parse!
+
+Help_message = option_parser.to_s
+
 def usage
-  puts "mmarkdown <file.md>"
+  puts Help_message
 end
 
 if ARGV.size != 1
   usage
   exit 0
+else
+  in_filename = ARGV[0]
 end
 
 md_string = File.open(ARGV[0]).read
 
-puts MMarkdown.new(md_string).to_str
+html_string = MMarkdown.new(md_string).to_str
+
+unless options[:stdout]
+  if options[:out_filename]
+    out_filename = options[:out_filename]
+  else
+    if in_filename =~ /\.md$/
+      out_filename = in_filename.gsub(/\.md$/, ".html")
+    elsif in_filename =~ /\.markdown$/
+      out_filename = in_filename.gsub
+    else
+      out_filename = in_filename + ".html"
+    end
+  end
+
+  File.open(out_filename, "w").write(html_string)
+else
+  puts html_string
+end
 
