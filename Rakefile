@@ -21,7 +21,7 @@ begin
     gem.version       = MMarkdown::VERSION
     gem.files         = `git ls-files`.split("\n")
     gem.test_files    = `git ls-files -- test/*`.split("\n")
-    gem.licenses      = ["Ruby License"]
+    gem.licenses      = ["MIT License"]
     gem.homepage      = "http://github.com/tanahiro/mmarkdown"
     gem.add_dependency("redcarpet", "~> 3.0")
     gem.add_dependency("math_ml",   "~> 0.14")
