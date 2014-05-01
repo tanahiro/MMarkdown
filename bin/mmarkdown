@@ -53,8 +53,10 @@ unless options[:stdout]
   else
     if in_filename =~ /\.md$/
       out_filename = in_filename.gsub(/\.md$/, ".html")
+    elsif in_filename =~ /\.mmd$/
+      out_filename = in_filename.gsub(/\.mmd$/, ".html")
     elsif in_filename =~ /\.markdown$/
-      out_filename = in_filename.gsub
+      out_filename = in_filename.gsub(/\.markdown$/, ".html")
     else
       out_filename = in_filename + ".html"
     end
