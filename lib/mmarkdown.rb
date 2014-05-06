@@ -40,7 +40,7 @@ class MMarkdown
   end
 
   def toc_html nesting_level = 3
-    render_toc = Redcarpet::Render::HTML_TOC.new
+    render_toc = Redcarpet::Render::HTML_TOC.new(nesting_level: nesting_level)
     toc_html = Redcarpet::Markdown.new(render_toc).render(@md_mathml)
 
     return toc_html
