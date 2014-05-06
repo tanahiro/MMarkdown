@@ -4,6 +4,12 @@ require "redcarpet"
 require "#{__dir__}/mmarkdown/version"
 
 class MMarkdown
+  def self.load_file filename
+    str = File.open(filename).read
+
+    return self.new(str)
+  end
+
   def initialize md_string
     @md_mathml = equations_to_mathml(md_string)
 
