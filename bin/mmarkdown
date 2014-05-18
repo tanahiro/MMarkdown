@@ -13,10 +13,22 @@ option_parser = OptionParser.new {|opts|
   Version = MMarkdown::VERSION
 
   opts.banner  = "Markdown with MathML\n"
-  opts.banner += "  Usage: #{File.basename(__FILE__)} <file.md>"
+  opts.banner += "  Usage: #{File.basename(__FILE__)} [option] <file.md>\n"
+  opts.banner += "         #{File.basename(__FILE__)} [option] -i <markdown string>"
 
-  opts.on("-o", "--output FILENAME", String, "Output file name") {|f|
+  opts.separator "Options:"
+
+  opts.on("-oFILENAME", "--output FILENAME", String, "Output file name") {|f|
     options[:out_filename] = f
+  }
+
+  opts.on("-iSTRING", "--input STRING", String, "Markdown string") {|str|
+    options[:input_string] = str
+  }
+
+  opts.on("--toc LEVEL", Integer, "List of table of contents as HTML",
+         "(Header LEVEL)") {|level|
+    options[:toc] = level
   }
 
   opts.on("--stdout", "Output to STDOUT") {
@@ -36,16 +48,24 @@ def usage
   puts Help_message
 end
 
-if ARGV.size != 1
+if (ARGV.size != 1) && !options[:input_string]
   usage
   exit 0
 else
   in_filename = ARGV[0]
 end
 
-md_string = File.open(ARGV[0]).read
+if options[:input_string]
+  md_string = options[:input_string]
+else
+  md_string = File.open(ARGV[0]).read
+end
 
-html_string = MMarkdown.new(md_string).to_str
+if options[:toc]
+  html_string = MMarkdown.new(md_string).toc_html(options[:toc])
+else
+  html_string = MMarkdown.new(md_string).to_str
+end
 
 unless options[:stdout]
   if options[:out_filename]
@@ -57,6 +77,8 @@ unless options[:stdout]
       out_filename = in_filename.gsub(/\.mmd$/, ".html")
     elsif in_filename =~ /\.markdown$/
       out_filename = in_filename.gsub(/\.markdown$/, ".html")
+    elsif in_filename == ""
+      out_filename = "mmarkdown.html"
     else
       out_filename = in_filename + ".html"
     end
