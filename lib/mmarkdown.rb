@@ -34,11 +34,11 @@ class MMarkdown
     equations = []
 
     string_mathml = string.clone
-    string.scan(/\\\[(.*)\\\]/) {|m|
+    string.scan(/\\\[(.*?)\\\]/) {|m|
       string_mathml.gsub!("\\[" + m.first + "\\]", m.first.to_mathml(true).to_s)
     }
 
-    string.scan(/\\\((.*)\\\)/) {|m|
+    string.scan(/\\\((.*?)\\\)/) {|m|
       string_mathml.gsub!("\\(" + m.first + "\\)", m.first.to_mathml.to_s)
     }
 

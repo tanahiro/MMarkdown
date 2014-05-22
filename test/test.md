@@ -3,7 +3,8 @@
 This is a test data
 
 ## Equation
-This is an equation, \( x^2 + y^2 = r^2 \)
+This is an equation. \( x^2 + y^2 = r^2 \),
+(\( x = r \cos \theta \) and \( y = r \sin \theta \)).
 
 And this is the second
 \( \sin^2 \theta + \cos^2 \theta = 1 \).
