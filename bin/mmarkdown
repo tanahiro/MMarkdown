@@ -76,7 +76,11 @@ end
 if options[:toc]
   html_string = MMarkdown.new(md_string).toc_html(options[:toc])
 else
-  html_string = MMarkdown.new(md_string, title: options[:title]).to_str
+  html_string = MMarkdown.new(md_string,
+                              title: options[:title],
+                              style: options[:style_file],
+                              footer: options[:footer]
+                             ).to_str
 end
 
 unless options[:stdout]
