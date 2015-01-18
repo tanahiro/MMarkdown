@@ -14,6 +14,20 @@ class MMarkdownTest < MiniTest::Test
                  Nokogiri::HTML::DocumentFragment.parse(html_actual).to_html)
   end
 
+  def test_with_title
+    md_string = File.open("#{__dir__}/test.mmd").read
+    html_actual = MMarkdown.new(md_string,
+                                title: "Test",
+                                style: "#{__dir__}/test.css",
+                                footer: "#{__dir__}/footer.html"
+                               ).to_str
+
+    html_expected = File.open("#{__dir__}/test_with_title.html").read
+
+    assert_equal(Nokogiri::HTML::DocumentFragment.parse(html_expected).to_html,
+                 Nokogiri::HTML::DocumentFragment.parse(html_actual).to_html)
+  end
+
   def test_toc_html
     md_string = File.open("#{__dir__}/test.mmd").read
 

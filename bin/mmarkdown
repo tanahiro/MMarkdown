@@ -35,6 +35,18 @@ option_parser = OptionParser.new {|opts|
     options[:stdout] = true
   }
 
+  opts.on("--style STYLE", String, "File name inserted as header") {|style|
+    options[:style_file] = style
+  }
+
+  opts.on("--title TITLE", String, "Title of created html file") {|title|
+    options[:title] = title
+  }
+
+  opts.on("--footer FOOTER", String, "File name for footer") {|footer|
+    options[:footer] = footer
+  }
+
   opts.on("-h", "--help", "Shows this message") {
     puts opts
     exit
@@ -64,7 +76,7 @@ end
 if options[:toc]
   html_string = MMarkdown.new(md_string).toc_html(options[:toc])
 else
-  html_string = MMarkdown.new(md_string).to_str
+  html_string = MMarkdown.new(md_string, title: options[:title]).to_str
 end
 
 unless options[:stdout]

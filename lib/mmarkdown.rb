@@ -10,7 +10,7 @@ class MMarkdown
     return self.new(str)
   end
 
-  def initialize md_string
+  def initialize md_string, title: nil, style: nil, footer: nil
     @md_mathml = equations_to_mathml(md_string)
 
     @md_mathml.gsub!(/%%.*$/, '')
@@ -30,6 +30,37 @@ class MMarkdown
     render = Redcarpet::Render::HTML.new(render_extensions)
 
     @md = Redcarpet::Markdown.new(render, parse_extensions).render(@md_mathml)
+
+    if title or style or footer
+      @header  = "<!DOCTYPE html>\n"
+      @header += "<html>\n"
+      @header += "<head>\n"
+
+      if title
+        @header += "  <title>" + title + "</title>\n"
+      end
+
+      if style
+        style_str = "  <style type=\"text/css\">\n"
+        File.open(style).each_line {|line|
+          style_str += ("    " + line)
+        }
+
+        @header += style_str
+        @header += "  </style>\n"
+      end
+
+      @header += "</head>\n"
+      @header += "<body>\n"
+
+      @footer = ""
+      if footer
+        @footer += "<footer>\n"
+        @footer += File.open(footer).read
+        @footer += "</footer>\n"
+      end
+      @footer += "</body>\n</html>\n"
+    end
   end
 
   ##
@@ -61,7 +92,18 @@ class MMarkdown
   ##
   # Returns HTML
   def to_str
-    @md.to_str
+    str = ""
+    if @header
+      str += @header
+    end
+
+    str += @md.to_str
+
+    if @footer
+      str += @footer
+    end
+
+    return str
   end
   alias :to_html :to_str
 end
