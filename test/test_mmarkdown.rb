@@ -5,7 +5,7 @@ require "#{__dir__}/../lib/mmarkdown"
 
 class MMarkdownTest < MiniTest::Test
   def test_mmarkdown
-    md_string = File.open("#{__dir__}/test.md").read
+    md_string = File.open("#{__dir__}/test.mmd").read
     html_actual = MMarkdown.new(md_string).to_str
 
     html_expected = File.open("#{__dir__}/test.html").read
@@ -15,7 +15,7 @@ class MMarkdownTest < MiniTest::Test
   end
 
   def test_toc_html
-    md_string = File.open("#{__dir__}/test.md").read
+    md_string = File.open("#{__dir__}/test.mmd").read
 
     mmarkdown = MMarkdown.new(md_string)
     toc_actual = mmarkdown.toc_html
