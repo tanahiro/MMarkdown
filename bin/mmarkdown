@@ -4,8 +4,11 @@
 
 require 'optparse'
 
-root = "#{__dir__}/.."
-require "#{root}/lib/mmarkdown"
+libdir = "#{__dir__}/../lib"
+$LOAD_PATH.unshift(libdir)
+
+require 'mmarkdown'
+require 'mmarkdown/version'
 
 options = {}
 
