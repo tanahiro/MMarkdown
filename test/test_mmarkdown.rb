@@ -34,41 +34,27 @@ class MMarkdownTest < MiniTest::Test
     mmarkdown = MMarkdown.new(md_string)
     toc_actual = mmarkdown.toc_html
 
+    toc_expected = nil
     toc_expected = <<EOF
-<ul>
-<li>
-<a href="#test">Test</a>
-<ul>
-<li>
-<a href="#equation">Equation</a>
-</li>
-<li>
-<a href="#markdown">Markdown</a>
-<ul>
-<li>
-<a href="#list">List</a>
-</li>
-<li>
-<a href="#quote">Quote</a>
-</li>
-<li>
-<a href="#table">Table</a>
-</li>
-<li>
-<a href="#syntax-highlight">Syntax highlight</a>
-</li>
-<li>
-<a href="#link">Link</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
+<ul id="markdown-toc">
+  <li><a href="#test" id="markdown-toc-test">Test</a>    <ul>
+      <li><a href="#equation" id="markdown-toc-equation">Equation</a></li>
+      <li><a href="#markdown" id="markdown-toc-markdown">Markdown</a>        <ul>
+          <li><a href="#list" id="markdown-toc-list">List</a></li>
+          <li><a href="#quote" id="markdown-toc-quote">Quote</a></li>
+          <li><a href="#table" id="markdown-toc-table">Table</a></li>
+          <li><a href="#syntax-highlight" id="markdown-toc-syntax-highlight">Syntax highlight</a></li>
+          <li><a href="#link" id="markdown-toc-link">Link</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
 </ul>
 EOF
 
     assert_equal(toc_expected, toc_actual)
 
   end
+
 end
 

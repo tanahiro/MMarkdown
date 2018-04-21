@@ -3,78 +3,75 @@
 <p>This is a test data</p>
 
 <h2 id="equation">Equation</h2>
-
-<p>This is an equation. <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><msup><mi>x</mi><mn>2</mn></msup><mo stretchy='false'>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo stretchy='false'>=</mo><msup><mi>r</mi><mn>2</mn></msup></math>,
-(<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><mi>x</mi><mo stretchy='false'>=</mo><mi>r</mi><mi>cos</mi><mi>&theta;</mi></math> and <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><mi>y</mi><mo stretchy='false'>=</mo><mi>r</mi><mi>sin</mi><mi>&theta;</mi></math>).</p>
+<p>This is an equation. <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msup><mi>x</mi> <mn>2</mn></msup><mo>+</mo><msup><mi>y</mi> <mn>2</mn></msup><mo>=</mo><msup><mi>r</mi> <mn>2</mn></msup></mrow><annotation encoding='application/x-tex'>x^2 + y^2 = r^2</annotation></semantics></math>,
+(<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>x</mi><mo>=</mo><mi>r</mi><mi>cos</mi><mi>&theta;</mi></mrow><annotation encoding='application/x-tex'>x = r \cos \theta</annotation></semantics></math> and <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>y</mi><mo>=</mo><mi>r</mi><mi>sin</mi><mi>&theta;</mi></mrow><annotation encoding='application/x-tex'>y = r \sin \theta</annotation></semantics></math>).</p>
 
 <p>And this is the second
-<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><msup><mi>sin</mi><mn>2</mn></msup><mi>&theta;</mi><mo stretchy='false'>+</mo><msup><mi>cos</mi><mn>2</mn></msup><mi>&theta;</mi><mo stretchy='false'>=</mo><mn>1</mn></math>.</p>
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msup><mi>sin</mi> <mn>2</mn></msup><mi>&theta;</mi><mo>+</mo><msup><mi>cos</mi> <mn>2</mn></msup><mi>&theta;</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding='application/x-tex'>\sin^2 \theta + \cos^2 \theta = 1</annotation></semantics></math>.</p>
 
-<p>日本語の後の数式 <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><msubsup><mo stretchy='false'>&sum;</mo><mrow><mi>i</mi><mo stretchy='false'>=</mo><mn>0</mn></mrow><mrow><mi>N</mi></mrow></msubsup><msub><mi>x</mi><mi>i</mi></msub></math></p>
+<p>日本語の後の数式 <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msubsup><mo lspace="thinmathspace" rspace="thinmathspace">&Sum;</mo> <mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow> <mi>N</mi></msubsup><msub><mi>x</mi> <mi>i</mi></msub></mrow><annotation encoding='application/x-tex'>\sum_{i = 0}^{N} x_i</annotation></semantics></math></p>
 
-<p>Block style
-<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><msubsup><mo stretchy='false'>&int;</mo><mrow><mo stretchy='false'>-</mo><mn>&infin;</mn></mrow><mrow><mn>&infin;</mn></mrow></msubsup><mi>f</mi><mfenced open='(' close=')'><mrow><mi>x</mi></mrow></mfenced><mspace width='0.167em' /><mi>d</mi><mi>x</mi></math></p>
+<p>Block style</p>
 
-<p>Same equation again <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><msup><mi>sin</mi><mn>2</mn></msup><mi>&theta;</mi><mo stretchy='false'>+</mo><msup><mi>cos</mi><mn>2</mn></msup><mi>&theta;</mi><mo stretchy='false'>=</mo><mn>1</mn></math>.</p>
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><msubsup><mo>&Integral;</mo> <mrow><mo lspace="verythinmathspace" rspace="0em">&minus;</mo><mn>&infin;</mn></mrow> <mn>&infin;</mn></msubsup><mi>f</mi><mrow><mo>(</mo><mi>x</mi><mo>)</mo></mrow><mspace width="thinmathspace"/><mi>dx</mi></mrow><annotation encoding='application/x-tex'>\int_{&#x2d;\infty}^{\infty} f \left( x \right) \, dx</annotation></semantics></math>
+
+<p>Same equation again <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msup><mi>sin</mi> <mn>2</mn></msup><mi>&theta;</mi><mo>+</mo><msup><mi>cos</mi> <mn>2</mn></msup><mi>&theta;</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding='application/x-tex'>\sin^2 \theta + \cos^2 \theta = 1</annotation></semantics></math>.</p>
 
 <p>vector:
-<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><mover><mrow><mi>x</mi></mrow><mo>&rightarrow;</mo></mover><mo stretchy='false'>+</mo><mover><mrow><mi>y</mi></mrow><mo>&rightarrow;</mo></mover><mo stretchy='false'>=</mo><mover><mrow><mi>p</mi></mrow><mo>&rightarrow;</mo></mover></math></p>
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mover><mi>x</mi><mo stretchy="false">&rightarrow;</mo></mover><mo>+</mo><mover><mi>y</mi><mo stretchy="false">&rightarrow;</mo></mover><mo>=</mo><mover><mi>p</mi><mo stretchy="false">&rightarrow;</mo></mover></mrow><annotation encoding='application/x-tex'>\vec{x} + \vec{y} = \vec{p}</annotation></semantics></math></p>
 
 <h2 id="markdown">Markdown</h2>
-
 <p><em>italic</em></p>
-
-<p><u>underline</u></p>
 
 <p><strong>bold</strong></p>
 
 <p><strong><em>bold italic</em></strong></p>
 
 <h3 id="list">List</h3>
-
 <ul>
-<li>item1</li>
-<li>item2
-
-<ul>
-<li>nested item2-1</li>
-<li>nested item2-2</li>
-</ul></li>
+  <li>item1</li>
+  <li>item2
+    <ul>
+      <li>nested item2-1</li>
+      <li>nested item2-2</li>
+    </ul>
+  </li>
 </ul>
 
 <ol>
-<li>item3</li>
-<li>item4</li>
+  <li>item3</li>
+  <li>item4</li>
 </ol>
 
 <h3 id="quote">Quote</h3>
-
 <blockquote>
-<p>quote</p>
+  <p>quote</p>
 </blockquote>
 
 <h3 id="table">Table</h3>
 
-<table><thead>
-<tr>
-<th style="text-align: left">head1</th>
-<th style="text-align: center">head2</th>
-<th style="text-align: right">head3</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">item</td>
-<td style="text-align: center">item</td>
-<td style="text-align: right">item</td>
-</tr>
-</tbody></table>
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">head1</th>
+      <th style="text-align: center">head2</th>
+      <th style="text-align: right">head3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">item</td>
+      <td style="text-align: center">item</td>
+      <td style="text-align: right">item</td>
+    </tr>
+  </tbody>
+</table>
 
 <h3 id="syntax-highlight">Syntax highlight</h3>
-
-<pre><code class="ruby">a = [1, 2, 3]
+<pre><code class="language-ruby">a = [1, 2, 3]
 a.reduce(0, :+)
 </code></pre>
 
 <h3 id="link">Link</h3>
-
 <p><a href="http://google.com">google</a></p>
+
